@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Inter";
+  src: url(/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+:root {
+  --color-blue: hsl(227 92% 58%);
+  --color-gunmetal: hsl(215 31% 21%);
+  --color-dark-electric-blue: hsl(215 17% 45%);
+
+  --color-white: hsl(0 0% 100%);
+  --color-borders: hsl(200 24% 88%);
+
+  --font-base: 16px;
+  --font-small: 0.875rem;
+  --font-heading-sm: 1.25rem;
+  --font-heading-md: 1.5rem;
+  --font-heading-lg: 3rem;
+  --font-heading-xl: 4rem;
+
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-full: 9999px;
+
+  font-family: Inter, sans-serif;
+  font-size: var(--font-base);
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 110%;
+}
+h1 {
+  font-size: var(--font-heading-xl);
+}
+h2 {
+  font-size: var(--font-heading-lg);
+}
+h3 {
+  font-size: var(--font-heading-md);
+}
+h4 {
+  font-size: var(--font-heading-sm);
+}
+p {
+  line-height: 150%;
+}
