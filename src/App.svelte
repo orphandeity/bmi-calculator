@@ -1,40 +1,23 @@
-<div>
-  <h1>Body Mass Index Calculator</h1>
+<script lang="ts">
+  import logo from "./assets/images/logo.svg";
+  import Card from "./card.svelte";
+</script>
 
-  <p>
-    Better understand your weight in relation to your height using our body mass
-    index (BM) calculator. While BMI is not the sole determinant of a healthy
-    weight, it offers a valuable starting point to evaluate your overall health
-    and well-being.
-  </p>
-
-  <div class="card">
-    <p>Enter your details below</p>
-
-    <select name="" id="">
-      <option>Metric</option>
-      <option>Imperial</option>
-    </select>
-
-    <label>
-      Height
-      <input type="text" />
-    </label>
-
-    <label>
-      Weight
-      <input type="text" />
-    </label>
-
-    <div class="result">
-      <div>Your BMI is...</div>
-
-      <!-- add score -->
-
-      <div>Your BMI suggests you're <!-- add classification -->.</div>
-      <div>Your ideal weight is between <!-- add range -->.</div>
+<div class="container">
+  <main>
+    <div class="hero">
+      <img src={logo} alt="logo" />
+      <h1>Body Mass Index Calculator</h1>
+      <p>
+        Better understand your weight in relation to your height using our body
+        mass index (BM) calculator. While BMI is not the sole determinant of a
+        healthy weight, it offers a valuable starting point to evaluate your
+        overall health and well-being.
+      </p>
     </div>
-  </div>
+
+    <Card />
+  </main>
 
   <section>
     <h2>What your BMI result means</h2>
@@ -130,3 +113,29 @@
     </div>
   </section>
 </div>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+  }
+  main {
+    position: relative;
+    width: 100%;
+    padding-inline: var(--padding-base);
+    padding-top: 2rem;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  .hero img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+</style>
