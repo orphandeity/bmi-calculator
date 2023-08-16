@@ -66,11 +66,7 @@
     inset: 0;
     height: 60%;
     z-index: -1;
-    background: linear-gradient(
-      to top left,
-      var(--color-gradient-1),
-      var(--color-gradient-2)
-    );
+    background: var(--gradient-1);
     border-bottom-left-radius: var(--radius-lg);
     border-bottom-right-radius: var(--radius-lg);
   }

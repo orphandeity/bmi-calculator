@@ -1,6 +1,10 @@
 <script lang="ts">
   import logo from "./assets/images/logo.svg";
   import Card from "./card.svelte";
+  import image_man_eating from "./assets/images/image-man-eating.webp";
+  import icon_eating from "./assets/images/icon-eating.svg";
+  import icon_exercise from "./assets/images/icon-exercise.svg";
+  import icon_sleep from "./assets/images/icon-sleep.svg";
 </script>
 
 <div class="container">
@@ -19,7 +23,9 @@
     <Card />
   </main>
 
-  <section>
+  <section class="information">
+    <img src={image_man_eating} alt="man eating sushi roll with chopsticks" />
+
     <h2>What your BMI result means</h2>
 
     <p>
@@ -33,6 +39,9 @@
 
     <ul>
       <li>
+        <div class="eating">
+          <img src={icon_eating} alt="" />
+        </div>
         <h3>Healthy eating</h3>
         <p>
           Healthy eating promotes weight control, disease prevention, better
@@ -41,6 +50,9 @@
       </li>
 
       <li>
+        <div class="exercise">
+          <img src={icon_exercise} alt="" />
+        </div>
         <h3>Regular exercise</h3>
         <p>
           Exercise improves fitness, aids weight control, elevates mood, and
@@ -49,6 +61,9 @@
       </li>
 
       <li>
+        <div class="sleep">
+          <img src={icon_sleep} alt="" />
+        </div>
         <h3>Adequate sleep</h3>
         <p>
           Sleep enhances mental clarity, emotional stability, and physical
@@ -137,5 +152,41 @@
   .hero img {
     width: 2.5rem;
     height: 2.5rem;
+  }
+
+  .information h2 {
+    margin: 3rem 1.5rem 0;
+  }
+  .information p {
+    color: var(--color-dark-electric-blue);
+  }
+  .information > p {
+    margin: 2rem 1.5rem 4rem;
+  }
+  .information ul {
+    background: var(--gradient-1);
+    padding: 3.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .information li > :first-child {
+    width: 4rem;
+    height: 4rem;
+    border-radius: var(--radius-full);
+    display: grid;
+    place-items: center;
+  }
+  .eating {
+    background: var(--color-red);
+  }
+  .exercise {
+    background: var(--color-yellow);
+  }
+  .sleep {
+    background: var(--color-green);
+  }
+  .information h3 {
+    margin: 2rem 0 1.5rem;
   }
 </style>

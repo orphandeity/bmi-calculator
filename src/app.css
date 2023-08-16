@@ -8,6 +8,10 @@
   --color-gunmetal: hsla(215 31% 21% / 1);
   --color-dark-electric-blue: hsla(215 17% 45% / 1);
 
+  --color-red: hsla(331 89% 53% / 0.15);
+  --color-yellow: hsla(29 92% 58% / 0.15);
+  --color-green: hsla(180 70% 45% / 0.15);
+
   --color-blue-bg: hsla(227 92% 58% / 0.15);
 
   --color-white: hsla(0 0% 100% / 1);
@@ -15,6 +19,12 @@
 
   --color-gradient-1: hsla(216 95% 92% / 1);
   --color-gradient-2: hsla(184 95% 92% / 0);
+
+  --gradient-1: linear-gradient(
+    to top left,
+    var(--color-gradient-1),
+    var(--color-gradient-2)
+  );
 
   --color-shadow: hsla(211 40% 69% / 0.25);
 
@@ -81,6 +91,12 @@ p {
   line-height: 150%;
 }
 
+ul,
+ol,
+menu {
+  list-style: none;
+}
+
 input,
 textarea,
 label,
@@ -91,4 +107,11 @@ option {
   font-size: inherit;
   font-weight: inherit;
   color: inherit;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
