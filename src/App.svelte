@@ -5,6 +5,11 @@
   import icon_eating from "./assets/images/icon-eating.svg";
   import icon_exercise from "./assets/images/icon-exercise.svg";
   import icon_sleep from "./assets/images/icon-sleep.svg";
+  import icon_gender from "./assets/images/icon-gender.svg";
+  import icon_age from "./assets/images/icon-age.svg";
+  import icon_muscle from "./assets/images/icon-muscle.svg";
+  import icon_pregnancy from "./assets/images/icon-pregnancy.svg";
+  import icon_race from "./assets/images/icon-race.svg";
 </script>
 
 <div class="container">
@@ -73,7 +78,7 @@
     </ul>
   </section>
 
-  <section>
+  <section class="limitations">
     <div>
       <h2>Limitations of BMI</h2>
       <p>
@@ -84,48 +89,65 @@
       </p>
     </div>
 
-    <div>
-      <h3>Gender</h3>
-      <p>
-        The development and body fat composition of girls and boys vary with
-        age. Consequently, a child's age and gender are considered when
-        evaluating their BMI.
-      </p>
-    </div>
+    <ul>
+      <li>
+        <div>
+          <img src={icon_gender} alt="" />
+          <h3>Gender</h3>
+        </div>
+        <p>
+          The development and body fat composition of girls and boys vary with
+          age. Consequently, a child's age and gender are considered when
+          evaluating their BMI.
+        </p>
+      </li>
 
-    <div>
-      <h3>Age</h3>
-      <p>
-        In aging individuals, increased body fat and muscle loss may cause BMI
-        to underestimate body fat content.
-      </p>
-    </div>
+      <li>
+        <div>
+          <img src={icon_age} alt="" />
+          <h3>Age</h3>
+        </div>
+        <p>
+          In aging individuals, increased body fat and muscle loss may cause BMI
+          to underestimate body fat content.
+        </p>
+      </li>
 
-    <div>
-      <h3>Muscle</h3>
-      <p>
-        BMI may misclassify muscular individuals as overweight or obese, as it
-        doesn't differentiate muscle from fat.
-      </p>
-    </div>
+      <li>
+        <div>
+          <img src={icon_muscle} alt="" />
+          <h3>Muscle</h3>
+        </div>
+        <p>
+          BMI may misclassify muscular individuals as overweight or obese, as it
+          doesn't differentiate muscle from fat.
+        </p>
+      </li>
 
-    <div>
-      <h3>Pregnancy</h3>
-      <p>
-        Expectant mothers experience weight gain due to their growing baby.
-        Maintaining a healthy pre-pregnancy BMI is advisable to minimise health
-        risks for both mother and child.
-      </p>
-    </div>
+      <li>
+        <div>
+          <img src={icon_pregnancy} alt="" />
+          <h3>Pregnancy</h3>
+        </div>
+        <p>
+          Expectant mothers experience weight gain due to their growing baby.
+          Maintaining a healthy pre-pregnancy BMI is advisable to minimise
+          health risks for both mother and child.
+        </p>
+      </li>
 
-    <div>
-      <h3>Race</h3>
-      <p>
-        Certain health concerns may affect individuals of some Black and Asian
-        origins at lower BMIs than others. To learn more, it is advised to
-        discuss this with your GP or practice nurse.
-      </p>
-    </div>
+      <li>
+        <div>
+          <img src={icon_race} alt="" />
+          <h3>Race</h3>
+        </div>
+        <p>
+          Certain health concerns may affect individuals of some Black and Asian
+          origins at lower BMIs than others. To learn more, it is advised to
+          discuss this with your GP or practice nurse.
+        </p>
+      </li>
+    </ul>
   </section>
 </div>
 
@@ -155,17 +177,17 @@
   }
 
   .information h2 {
-    margin: 3rem 1.5rem 0;
+    margin: 3rem var(--padding-base) 0;
   }
   .information p {
     color: var(--color-dark-electric-blue);
   }
   .information > p {
-    margin: 2rem 1.5rem 4rem;
+    margin: 2rem var(--padding-base) 4rem;
   }
   .information ul {
     background: var(--gradient-1);
-    padding: 3.5rem 1.5rem;
+    padding: 3.5rem var(--padding-base);
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
@@ -187,6 +209,47 @@
     background: var(--color-green);
   }
   .information h3 {
+    font-size: var(--font-heading-md);
     margin: 2rem 0 1.5rem;
+  }
+
+  .limitations {
+    margin: 0 var(--padding-base) 6rem;
+  }
+  .limitations > :first-child {
+    text-align: center;
+  }
+  .limitations h2 {
+    margin-bottom: 1.5rem;
+  }
+  .limitations p {
+    color: var(--color-dark-electric-blue);
+  }
+  .limitations ul {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .limitations li {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .limitations li > :first-child {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .limitations li > :first-child img {
+    width: 2rem;
+    height: 2rem;
+  }
+  .limitations h3 {
+    font-size: var(--font-heading-sm);
   }
 </style>
