@@ -1,52 +1,184 @@
+<script lang="ts">
+  // all calculations done with metric units
+  let imperial: boolean = false; // true = imperial, false = metric
+
+  let cm: number;
+  let kg: number;
+  let feet: number;
+  let inches: number;
+  let stone: number;
+  let lbs: number;
+
+  $: metricWeightTotalLbs = Number(stone) * 14 + Number(lbs);
+  $: metricHeightTotalInches = Number(feet) * 12 + Number(inches);
+
+  function convertLbsToKg(lbs) {
+    return lbs * 0.4535924;
+  }
+  function convertInchesToCm(inches) {
+    return inches * 2.54;
+  }
+
+  function calculateBmi(weight, height) {
+    let kg = weight;
+    let cm = height;
+    if (imperial) {
+      kg = convertLbsToKg(weight);
+      cm = convertInchesToCm(height);
+    }
+    return (kg / (cm * 0.01) ** 2).toFixed(1);
+  }
+</script>
+
 <div class="card">
   <div class="background" />
   <h2>Enter your details below</h2>
 
   <fieldset name="imperial" id="metric-imperial">
     <label for="metric">
-      <input type="radio" name="imperial" id="metric" value="metric" checked />
+      <input
+        type="radio"
+        name="imperial"
+        id="metric"
+        placeholder="0"
+        bind:group={imperial}
+        value={false}
+      />
       Metric
     </label>
 
     <label for="imperial">
-      <input type="radio" name="imperial" id="imperial" value="imperial" />
+      <input
+        type="radio"
+        name="imperial"
+        id="imperial"
+        placeholder="0"
+        bind:group={imperial}
+        value={true}
+      />
       Imperial
     </label>
   </fieldset>
 
-  <div class="input">
-    <label for="height">
-      Height
-      <div>
-        <input type="text" id="height" maxlength="7" />
-        <span>cm</span>
-      </div>
-    </label>
+  {#if imperial}
+    <div class="input">
+      <label for="height">
+        Height
+        <div class="metric">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="height"
+              maxlength="3"
+              placeholder="0"
+              bind:value={feet}
+            />
+            <span>ft</span>
+          </div>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="height"
+              maxlength="3"
+              placeholder="0"
+              bind:value={inches}
+            />
+            <span>in</span>
+          </div>
+        </div>
+      </label>
 
-    <label for="weight">
-      Weight
-      <div>
-        <input type="text" id="weight" maxlength="7" />
-        <span>kg</span>
-      </div>
-    </label>
-  </div>
+      <label for="weight">
+        Weight
+        <div class="metric">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="weight"
+              maxlength="3"
+              placeholder="0"
+              bind:value={stone}
+            />
+            <span>st</span>
+          </div>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="weight"
+              maxlength="3"
+              placeholder="0"
+              bind:value={lbs}
+            />
+            <span>lbs</span>
+          </div>
+        </div>
+      </label>
+    </div>
+  {:else}
+    <div class="input">
+      <label for="height">
+        Height
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="height"
+            maxlength="3"
+            placeholder="0"
+            bind:value={cm}
+          />
+          <span>cm</span>
+        </div>
+      </label>
+
+      <label for="weight">
+        Weight
+        <div class="input-wrapper">
+          <input
+            type="text"
+            id="weight"
+            maxlength="3"
+            placeholder="0"
+            bind:value={kg}
+          />
+          <span>kg</span>
+        </div>
+      </label>
+    </div>
+  {/if}
 
   <div class="result">
-    <div>
-      <p>Your BMI is...</p>
+    {#if imperial && inches && lbs}
       <div>
-        <!-- add score -->
-        23.4
+        <p>Your BMI is...</p>
+        <div id="bmi">
+          {calculateBmi(metricWeightTotalLbs, metricHeightTotalInches)}
+        </div>
       </div>
-    </div>
-
-    <p>
-      Your BMI suggests you're <span class="classification"
-        ><!-- add classification --></span
-      >. Your ideal weight is between
-      <span class="range"><!-- add range --></span>.
-    </p>
+      <p>
+        Your BMI suggests you're <span class="classification"
+          ><!-- add classification --></span
+        >. Your ideal weight is between
+        <span class="range"><!-- add range --></span>.
+      </p>
+    {:else if !imperial && cm && kg}
+      <div>
+        <p>Your BMI is...</p>
+        <div id="bmi">
+          {calculateBmi(kg, cm)}
+        </div>
+      </div>
+      <p>
+        Your BMI suggests you're <span class="classification"
+          ><!-- add classification --></span
+        >. Your ideal weight is between
+        <span class="range"><!-- add range --></span>.
+      </p>
+    {:else}
+      <div>
+        <p class="welcome">Welcome!</p>
+        <p>Enter your height and weight and you'll see your BMI result here</p>
+      </div>
+    {/if}
   </div>
 </div>
 
@@ -135,7 +267,7 @@
     flex-direction: column;
     gap: 0.5rem;
   }
-  .input label > div {
+  .input-wrapper {
     position: relative;
     font-size: var(--font-heading-md);
     font-weight: 600;
@@ -146,12 +278,27 @@
     padding: 1.25rem 1.5rem;
     width: 100%;
   }
-  .input label > div > span {
+  input[type="text"]::placeholder {
+    color: var(--color-gunmetal-muted);
+  }
+  .input label span {
     position: absolute;
     right: var(--padding-base);
     top: 50%;
     transform: translatey(-50%);
     color: var(--color-blue);
+  }
+
+  .metric {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .welcome {
+    font-size: var(--font-heading-md);
+    line-height: 110%;
+    letter-spacing: -5%;
   }
 
   .result {
@@ -164,21 +311,20 @@
     gap: 1.5rem;
   }
   .result > :first-child {
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
-  .result > :first-child > :first-child {
-    font-weight: 600;
-  }
-  .result > :first-child > :last-child {
+
+  #bmi {
     font-size: var(--font-heading-lg);
-    font-weight: 600;
     line-height: 110%;
     letter-spacing: -5%;
   }
-  .result > :last-child {
+  .result p:last-child {
     font-size: var(--font-small);
+    font-weight: 400;
   }
   .range {
     font-weight: 600;

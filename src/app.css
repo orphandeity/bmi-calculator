@@ -6,6 +6,7 @@
 :root {
   --color-blue: hsla(227 92% 58% / 1);
   --color-gunmetal: hsla(215 31% 21% / 1);
+  --color-gunmetal-muted: hsla(215 31% 21% / 0.25);
   --color-dark-electric-blue: hsla(215 17% 45% / 1);
 
   --color-red: hsla(331 89% 53% / 0.15);
