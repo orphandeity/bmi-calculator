@@ -14,8 +14,8 @@
 
 <div class="container">
   <main>
+    <img src={logo} alt="logo" class="logo" />
     <div class="hero">
-      <img src={logo} alt="logo" />
       <h1>Body Mass Index Calculator</h1>
       <p>
         Better understand your weight in relation to your height using our body
@@ -165,15 +165,40 @@
   }
 
   .hero {
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     align-items: center;
     text-align: center;
   }
-  .hero img {
+  .hero p {
+    color: var(--color-dark-electric-blue);
+  }
+  .logo {
+    margin-inline: auto;
     width: 2.5rem;
     height: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      gap: 6rem;
+    }
+    main {
+      position: relative;
+      width: 100%;
+      padding-inline: var(--padding-base);
+      padding-top: 2rem;
+    }
+
+    .hero {
+      margin-top: 2.5rem;
+    }
+    .logo {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
   }
 
   .information h2 {

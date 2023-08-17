@@ -254,9 +254,23 @@
   }
 
   .input {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .card {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .input {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .background {
+      height: 75%;
+    }
   }
 
   .input label {
@@ -304,10 +318,11 @@
   .result {
     background: var(--color-blue);
     color: var(--color-white);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-md) var(--radius-md) var(--radius-md)
+      var(--radius-md);
     padding: var(--padding-lg);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   .result > :first-child {
@@ -328,5 +343,14 @@
   }
   .range {
     font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    .result {
+      border-radius: var(--radius-md) var(--radius-full) var(--radius-full)
+        var(--radius-md);
+      padding: var(--padding-lg);
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>

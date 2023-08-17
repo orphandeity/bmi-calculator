@@ -44,7 +44,7 @@
   --radius-sm: 0.75rem;
   --radius-md: 1rem;
   --radius-lg: 2rem;
-  --radius-full: 9999px;
+  --radius-full: 75px;
 
   font-family: Inter, sans-serif;
   font-size: var(--font-base);
@@ -54,6 +54,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --padding-base: 2.5rem;
+  }
 }
 
 *,
