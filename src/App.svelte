@@ -29,51 +29,55 @@
   </main>
 
   <section class="information">
-    <img src={image_man_eating} alt="man eating sushi roll with chopsticks" />
+    <div>
+      <img src={image_man_eating} alt="man eating sushi roll with chopsticks" />
 
-    <h2>What your BMI result means</h2>
+      <div>
+        <h2>What your BMI result means</h2>
 
-    <p>
-      A BMI range of 18.5 to 24.9 is considered a 'healthy weight.' Maintaining
-      a healthy weight may lower your chances of experiencing health issues
-      later on, such as obesity and type 2 diabetes. Aim for a nutritious diet
-      with reduced fat and sugar content, incorporating ample fruits and
-      vegetables. Additionally, strive for regular physical activity, ideally
-      about 30 minutes daily for five days a week.
-    </p>
+        <p>
+          A BMI range of 18.5 to 24.9 is considered a 'healthy weight.'
+          Maintaining a healthy weight may lower your chances of experiencing
+          health issues later on, such as obesity and type 2 diabetes. Aim for a
+          nutritious diet with reduced fat and sugar content, incorporating
+          ample fruits and vegetables. Additionally, strive for regular physical
+          activity, ideally about 30 minutes daily for five days a week.
+        </p>
+      </div>
+    </div>
 
     <ul>
       <li>
-        <div class="eating">
-          <img src={icon_eating} alt="" />
+        <img src={icon_eating} alt="" />
+        <div>
+          <h3>Healthy eating</h3>
+          <p>
+            Healthy eating promotes weight control, disease prevention, better
+            digestion, immunity, mental clarity, and mood.
+          </p>
         </div>
-        <h3>Healthy eating</h3>
-        <p>
-          Healthy eating promotes weight control, disease prevention, better
-          digestion, immunity, mental clarity, and mood.
-        </p>
       </li>
 
       <li>
-        <div class="exercise">
-          <img src={icon_exercise} alt="" />
+        <img src={icon_exercise} alt="" />
+        <div>
+          <h3>Regular exercise</h3>
+          <p>
+            Exercise improves fitness, aids weight control, elevates mood, and
+            reduces disease risk, fostering wellness and longevity.
+          </p>
         </div>
-        <h3>Regular exercise</h3>
-        <p>
-          Exercise improves fitness, aids weight control, elevates mood, and
-          reduces disease risk, fostering wellness and longevity.
-        </p>
       </li>
 
       <li>
-        <div class="sleep">
-          <img src={icon_sleep} alt="" />
+        <img src={icon_sleep} alt="" />
+        <div>
+          <h3>Adequate sleep</h3>
+          <p>
+            Sleep enhances mental clarity, emotional stability, and physical
+            wellness, promoting overall restoration and rejuvenation.
+          </p>
         </div>
-        <h3>Adequate sleep</h3>
-        <p>
-          Sleep enhances mental clarity, emotional stability, and physical
-          wellness, promoting overall restoration and rejuvenation.
-        </p>
       </li>
     </ul>
   </section>
@@ -201,15 +205,32 @@
     }
   }
 
-  .information h2 {
-    margin: 3rem var(--padding-base) 0;
-  }
   .information p {
     color: var(--color-dark-electric-blue);
   }
-  .information > p {
-    margin: 2rem var(--padding-base) 4rem;
+  .information > :first-child > :last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-inline: var(--padding-base);
+    margin-top: 3rem;
+    margin-bottom: 4rem;
   }
+
+  @media (min-width: 768px) {
+    .information > :first-child {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+    .information > :first-child > :first-child {
+      transform: translateX(-75px);
+    }
+    .information > :first-child > :last-child {
+      margin: 0 var(--padding-base) 0 0;
+    }
+  }
+
   .information ul {
     background: var(--gradient-1);
     padding: 3.5rem var(--padding-base);
@@ -217,25 +238,34 @@
     flex-direction: column;
     gap: 2.5rem;
   }
-  .information li > :first-child {
+  .information li {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .information li > img {
     width: 4rem;
     height: 4rem;
-    border-radius: var(--radius-full);
-    display: grid;
-    place-items: center;
   }
-  .eating {
-    background: var(--color-red);
+  .information li > :last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
-  .exercise {
-    background: var(--color-yellow);
-  }
-  .sleep {
-    background: var(--color-green);
-  }
+
   .information h3 {
     font-size: var(--font-heading-md);
-    margin: 2rem 0 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .information ul {
+      margin-top: 6rem;
+      padding: 3.75rem var(--padding-base);
+    }
+    .information li {
+      flex-direction: row;
+      align-items: center;
+      gap: 2.5rem;
+    }
   }
 
   .limitations {

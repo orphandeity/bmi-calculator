@@ -258,20 +258,6 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  @media (min-width: 768px) {
-    .card {
-      margin-top: 2.5rem;
-      padding: 2rem;
-      gap: 2rem;
-    }
-    .input {
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .background {
-      height: 75%;
-    }
-  }
 
   .input label {
     font-size: var(--font-small);
@@ -346,6 +332,18 @@
   }
 
   @media (min-width: 768px) {
+    .card {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      gap: 2rem;
+    }
+    .input {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .background {
+      height: 75%;
+    }
     .result {
       border-radius: var(--radius-md) var(--radius-full) var(--radius-full)
         var(--radius-md);
