@@ -174,8 +174,8 @@
         <span class="range"><!-- add range --></span>.
       </p>
     {:else}
-      <div>
-        <p class="welcome">Welcome!</p>
+      <div class="welcome">
+        <p>Welcome!</p>
         <p>Enter your height and weight and you'll see your BMI result here</p>
       </div>
     {/if}
@@ -295,7 +295,7 @@
     gap: 1rem;
   }
 
-  .welcome {
+  .welcome > p:first-child {
     font-size: var(--font-heading-md);
     line-height: 110%;
     letter-spacing: -5%;
@@ -349,6 +349,9 @@
         var(--radius-md);
       padding: var(--padding-lg);
       grid-template-columns: 1fr 1fr;
+    }
+    .welcome {
+      grid-column: 1 / 3;
     }
   }
 </style>
