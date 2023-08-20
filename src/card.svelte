@@ -358,4 +358,13 @@
       grid-column: 1 / 3;
     }
   }
+  @media (min-width: 1440px) {
+    .card {
+      margin-top: 10.4375rem;
+    }
+    .background {
+      height: 737px;
+      width: 978px;
+    }
+  }
 </style>

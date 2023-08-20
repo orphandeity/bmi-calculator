@@ -61,6 +61,11 @@
     --padding-base: 2.5rem;
   }
 }
+@media (min-width: 1440px) {
+  :root {
+    --padding-base: 8.75rem;
+  }
+}
 
 *,
 *::before,

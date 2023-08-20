@@ -14,18 +14,22 @@
 
 <div class="container">
   <main>
-    <img src={logo} alt="logo" class="logo" />
-    <div class="hero">
-      <h1>Body Mass Index Calculator</h1>
-      <p>
-        Better understand your weight in relation to your height using our body
-        mass index (BM) calculator. While BMI is not the sole determinant of a
-        healthy weight, it offers a valuable starting point to evaluate your
-        overall health and well-being.
-      </p>
+    <div>
+      <img src={logo} alt="logo" class="logo" />
+      <div class="hero">
+        <h1>Body Mass Index Calculator</h1>
+        <p>
+          Better understand your weight in relation to your height using our
+          body mass index (BM) calculator. While BMI is not the sole determinant
+          of a healthy weight, it offers a valuable starting point to evaluate
+          your overall health and well-being.
+        </p>
+      </div>
     </div>
 
-    <Card />
+    <div>
+      <Card />
+    </div>
   </main>
 
   <section class="information">
@@ -202,6 +206,36 @@
     .logo {
       width: 2.5rem;
       height: 2.5rem;
+      margin: 0;
+    }
+  }
+  @media (min-width: 1440px) {
+    .container {
+      gap: 6rem;
+    }
+    main {
+      padding-top: 4.6875rem;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2rem;
+    }
+    main > :first-child {
+      grid-column: 1 / 6;
+      column-span: 6;
+    }
+    main > :nth-child(2) {
+      grid-column: 7 / 13;
+      column-span: 5;
+    }
+
+    .hero {
+      margin-top: 7.9375rem;
+      gap: 2.1875rem;
+      text-align: left;
+    }
+    .logo {
+      width: 4rem;
+      height: 4rem;
     }
   }
 
