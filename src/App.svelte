@@ -383,6 +383,9 @@
   }
 
   @media (min-width: 768px) {
+    .limitations h2 {
+      margin-bottom: 2rem;
+    }
     .limitations ul {
       grid-template-columns: repeat(12, 1fr);
       grid-template-rows: repeat(3, 1fr);
@@ -409,6 +412,46 @@
     }
     .limitations ul > :nth-child(5) {
       grid-column: 4 / 10;
+      grid-row: 3 / 4;
+    }
+  }
+  @media (min-width: 1440px) {
+    .limitations {
+      position: relative;
+    }
+    .limitations > :first-child {
+      text-align: left;
+      max-width: 654px;
+    }
+    .limitations h2 {
+      margin-bottom: calc(2rem + 3px);
+    }
+    .limitations ul {
+      margin-top: 0;
+      padding-bottom: 7.4rem;
+      grid-template-rows: auto;
+      gap: 2rem;
+      position: absolute;
+      top: 0;
+    }
+    .limitations ul > :nth-child(1) {
+      grid-column: 8 / 12;
+      grid-row: 1 / 2;
+    }
+    .limitations ul > :nth-child(2) {
+      grid-column: 5 / 9;
+      grid-row: 2 / 3;
+    }
+    .limitations ul > :nth-child(3) {
+      grid-column: 9 / 13;
+      grid-row: 2 / 3;
+    }
+    .limitations ul > :nth-child(4) {
+      grid-column: 3 / 7;
+      grid-row: 3 / 4;
+    }
+    .limitations ul > :nth-child(5) {
+      grid-column: 7 / 11;
       grid-row: 3 / 4;
     }
   }
