@@ -206,7 +206,6 @@
     .logo {
       width: 2.5rem;
       height: 2.5rem;
-      margin: 0;
     }
   }
   @media (min-width: 1440px) {
@@ -236,6 +235,7 @@
     .logo {
       width: 4rem;
       height: 4rem;
+      margin: 0;
     }
   }
 
