@@ -93,6 +93,14 @@ h1 {
 h2 {
   font-size: var(--font-heading-md);
 }
+@media (min-width: 1440px) {
+  h1 {
+    font-size: var(--font-heading-xl);
+  }
+  h2 {
+    font-size: var(--font-heading-lg);
+  }
+}
 
 p {
   line-height: 150%;

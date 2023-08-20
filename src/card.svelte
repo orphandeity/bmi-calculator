@@ -366,5 +366,8 @@
       height: 737px;
       width: 978px;
     }
+    h2 {
+      font-size: var(--font-heading-md);
+    }
   }
 </style>
