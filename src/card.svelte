@@ -1,4 +1,7 @@
 <script lang="ts">
+  import { backIn, backOut } from "svelte/easing";
+  import { fade } from "svelte/transition";
+
   // all calculations done with metric units
   let imperial: boolean = false; // true = imperial, false = metric
 
@@ -64,11 +67,10 @@
     <div class="input">
       <label for="height">
         Height
-        <div class="metric">
+        <div class="imperial">
           <div class="input-wrapper">
             <input
               type="text"
-              id="height"
               maxlength="3"
               placeholder="0"
               bind:value={feet}
@@ -78,7 +80,6 @@
           <div class="input-wrapper">
             <input
               type="text"
-              id="height"
               maxlength="3"
               placeholder="0"
               bind:value={inches}
@@ -90,11 +91,10 @@
 
       <label for="weight">
         Weight
-        <div class="metric">
+        <div class="imperial">
           <div class="input-wrapper">
             <input
               type="text"
-              id="weight"
               maxlength="3"
               placeholder="0"
               bind:value={stone}
@@ -102,20 +102,14 @@
             <span>st</span>
           </div>
           <div class="input-wrapper">
-            <input
-              type="text"
-              id="weight"
-              maxlength="3"
-              placeholder="0"
-              bind:value={lbs}
-            />
+            <input type="text" maxlength="3" placeholder="0" bind:value={lbs} />
             <span>lbs</span>
           </div>
         </div>
       </label>
     </div>
   {:else}
-    <div class="input">
+    <div class="input metric-wrapper">
       <label for="height">
         Height
         <div class="input-wrapper">
@@ -219,11 +213,16 @@
     align-items: center;
   }
   input[type="radio"] {
+    cursor: pointer;
     width: 2rem;
     height: 2rem;
     display: grid;
     place-content: center;
-    transition: 120ms background ease-in;
+    outline: 1px solid transparent;
+    transition: 200ms background ease-in, 300ms outline ease-in-out;
+  }
+  input[type="radio"]:hover {
+    outline: 1px solid var(--color-blue);
   }
   input[type="radio"]:checked {
     background: var(--color-blue-bg);
@@ -277,9 +276,14 @@
     border-radius: var(--radius-sm);
     padding: 1.25rem 1.5rem;
     width: 100%;
+    transition: 200ms border ease-in-out;
   }
   input[type="text"]::placeholder {
     color: var(--color-gunmetal-muted);
+  }
+  input[type="text"]:hover {
+    border: 1px solid var(--color-blue);
+    cursor: pointer;
   }
   .input label span {
     position: absolute;
@@ -289,7 +293,7 @@
     color: var(--color-blue);
   }
 
-  .metric {
+  .imperial {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
@@ -337,12 +341,12 @@
       padding: 2rem;
       gap: 2rem;
     }
-    .input {
+    .metric-wrapper {
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
     .background {
-      height: 75%;
+      height: 78%;
     }
     .result {
       border-radius: var(--radius-md) var(--radius-full) var(--radius-full)
