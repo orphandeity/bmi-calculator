@@ -19,12 +19,12 @@
   --color-borders: hsla(200 24% 88% / 1);
 
   --color-gradient-1: hsla(216 95% 92% / 1);
-  --color-gradient-2: hsla(184 95% 92% / 0);
+  --color-gradient-2: hsla(184 95% 92% / 0.05);
 
   --gradient-1: linear-gradient(
     to top left,
     var(--color-gradient-1),
-    var(--color-gradient-2)
+    var(--color-gradient-2) 50% 100%
   );
 
   --color-shadow: hsla(211 40% 69% / 0.25);

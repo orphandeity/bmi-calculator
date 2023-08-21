@@ -440,6 +440,18 @@
     .limitations > :first-child {
       text-align: left;
       max-width: 654px;
+      position: relative;
+    }
+    .limitations > :first-child::before {
+      content: "";
+      display: block;
+      height: 122px;
+      width: 100%;
+      position: absolute;
+      bottom: -130%;
+      left: 25%;
+      background-repeat: no-repeat;
+      background-image: url("./assets/images/pattern-curved-line-right.svg");
     }
     .limitations h2 {
       margin-bottom: calc(2rem + 3px);
