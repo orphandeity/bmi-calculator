@@ -37,6 +37,7 @@
       <img src={image_man_eating} alt="man eating sushi roll with chopsticks" />
 
       <div>
+        <div class="curved-line-left" />
         <h2>What your BMI result means</h2>
 
         <p>
@@ -276,6 +277,9 @@
   .information h3 {
     font-size: var(--font-heading-md);
   }
+  .curved-line-left {
+    display: none;
+  }
   @media (min-width: 768px) {
     .information > :first-child {
       display: grid;
@@ -316,6 +320,10 @@
       gap: calc(2rem + 3px);
       grid-column: 8 / 13;
       column-span: 5;
+      height: 100%;
+      justify-content: flex-end;
+      padding-bottom: 2.5rem;
+      position: relative;
     }
     .information ul {
       border-radius: calc(var(--radius-lg) + 3px);
@@ -339,6 +347,16 @@
     }
     .information li:nth-child(3) {
       grid-column: 9 / 13;
+    }
+    .curved-line-left {
+      display: block;
+      height: 200px;
+      width: 100%;
+      position: absolute;
+      top: -2.5rem;
+      right: -75%;
+      background-repeat: no-repeat;
+      background-image: url("./pattern-curved-line-left.svg");
     }
   }
 
