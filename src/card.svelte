@@ -11,7 +11,6 @@
 
   $: imperialWeightTotalLbs = Number(stone) * 14 + Number(lbs);
   $: imperialHeightTotalInches = Number(feet) * 12 + Number(inches);
-  console.log(imperialWeightTotalLbs, imperialHeightTotalInches);
 
   function convertLbsToKg(lbs) {
     return lbs * 0.453592;

@@ -356,7 +356,7 @@
       top: -2.5rem;
       right: -75%;
       background-repeat: no-repeat;
-      background-image: url("./pattern-curved-line-left.svg");
+      background-image: url("./assets/images/pattern-curved-line-left.svg");
     }
   }
 
