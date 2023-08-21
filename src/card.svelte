@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { backIn, backOut } from "svelte/easing";
-  import { fade } from "svelte/transition";
-
   // all calculations done with metric units
   let imperial: boolean = false; // true = imperial, false = metric
 
@@ -12,14 +9,19 @@
   let stone: number;
   let lbs: number;
 
-  $: metricWeightTotalLbs = Number(stone) * 14 + Number(lbs);
-  $: metricHeightTotalInches = Number(feet) * 12 + Number(inches);
+  $: imperialWeightTotalLbs = Number(stone) * 14 + Number(lbs);
+  $: imperialHeightTotalInches = Number(feet) * 12 + Number(inches);
+  console.log(imperialWeightTotalLbs, imperialHeightTotalInches);
 
   function convertLbsToKg(lbs) {
-    return lbs * 0.4535924;
+    return lbs * 0.453592;
   }
   function convertInchesToCm(inches) {
     return inches * 2.54;
+  }
+
+  function convertKgToLbs(kg) {
+    return Math.round(kg * 2.204623);
   }
 
   function calculateBmi(weight, height) {
@@ -30,6 +32,28 @@
       cm = convertInchesToCm(height);
     }
     return (kg / (cm * 0.01) ** 2).toFixed(1);
+  }
+
+  function analyzeResults(bmi) {
+    if (bmi < 18.5) {
+      return "underweight";
+    } else if (bmi >= 18.5 && bmi < 25) {
+      return "healthy";
+    } else if (bmi >= 25 && bmi < 30) {
+      return "overweight";
+    } else if (bmi >= 30) {
+      return "obese";
+    }
+  }
+
+  function healthyWeight(height) {
+    let baseHeight = 152;
+    let difference = height - baseHeight;
+    let addition = (difference / 2.54) * 2.3;
+    let healthyWeight = Math.round(baseHeight + addition);
+    return `${Math.round(
+      healthyWeight - healthyWeight * 0.02
+    )}lbs and ${Math.round(healthyWeight + healthyWeight * 0.02)}lbs`;
   }
 </script>
 
@@ -145,14 +169,18 @@
       <div>
         <p>Your BMI is...</p>
         <div id="bmi">
-          {calculateBmi(metricWeightTotalLbs, metricHeightTotalInches)}
+          {calculateBmi(imperialWeightTotalLbs, imperialHeightTotalInches)}
         </div>
       </div>
       <p>
         Your BMI suggests you're <span class="classification"
-          ><!-- add classification --></span
+          >{analyzeResults(
+            calculateBmi(imperialWeightTotalLbs, imperialHeightTotalInches)
+          )}</span
         >. Your ideal weight is between
-        <span class="range"><!-- add range --></span>.
+        <span class="range"
+          >{healthyWeight(convertInchesToCm(imperialHeightTotalInches))}</span
+        >.
       </p>
     {:else if !imperial && cm && kg}
       <div>
@@ -163,9 +191,9 @@
       </div>
       <p>
         Your BMI suggests you're <span class="classification"
-          ><!-- add classification --></span
+          >{analyzeResults(calculateBmi(kg, cm))}</span
         >. Your ideal weight is between
-        <span class="range"><!-- add range --></span>.
+        <span class="range">{healthyWeight(cm)}</span>.
       </p>
     {:else}
       <div class="welcome">
@@ -287,7 +315,7 @@
   }
   .input label span {
     position: absolute;
-    right: var(--padding-base);
+    right: 1.5rem;
     top: 50%;
     transform: translatey(-50%);
     color: var(--color-blue);
