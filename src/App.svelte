@@ -214,7 +214,7 @@
       gap: 07.5rem;
     }
     main {
-      padding-top: 4.6875rem;
+      padding-top: 2.6875rem;
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 2rem;
@@ -222,6 +222,7 @@
     main > :first-child {
       grid-column: 1 / 6;
       column-span: 6;
+      transform: translateY(5%);
     }
     main > :nth-child(2) {
       grid-column: 7 / 13;
